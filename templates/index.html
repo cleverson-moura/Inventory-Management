@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Estoque</title>
+    </head>
+    <body>
+        <h1>Lista de Produtos</h1>
+        <a href="adicionar">Adicionar Produto</a>
+        <table border="1">
+            <tr>
+                <th>ID</th><th>NOME</th><th>DESCRIÇÃO</th><th>QUANTIDADE</th><th>PREÇO</th>
+            </tr>
+            {% for produto in produtos %}
+            <tr>
+                <td>{{ produto[0] }}</td>
+                <td>{{ produto[1] }}</td>
+                <td>{{ produto[2] }}</td>
+                <td>{{ produto[3] }}</td>
+                <td>R$ {{ '%.2f' |format(produto[4]) }}</td>
+                <td><a href="/deletar/{{ produto[0] }}" onclick="return confirm('Tem certeza?');">🗑️ Deletar</a></td>
+                <td><a href="/atualizar/{{ produto[0] }}">Atualizar</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
