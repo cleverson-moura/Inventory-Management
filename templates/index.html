@@ -4,6 +4,11 @@
         <title>Estoque</title>
     </head>
     <body>
+        <form action="/" method="GET">
+            <input type="text" name="pesquisa"  placeholder="Pesquisar produto..." value="{{ request.args.get('pesquisa', '') }}">
+            
+            <button type="submit">🔍 Buscar</button>
+        </form>
         <h1>Lista de Produtos</h1>
         <a href="adicionar">Adicionar Produto</a>
         <table border="1">
