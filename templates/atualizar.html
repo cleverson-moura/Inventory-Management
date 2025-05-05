@@ -2,14 +2,15 @@
 <html>
 <head>
     <title>Editar Produto</title>
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
     <h1>Editar Produto</h1>
-    <form method="POST">
-        Nome: <input type="text" name="nome" value="{{ produto[1] }}" required><br>
-        Descrição: <input type="text" name="descricao" value="{{ produto[2] }}"><br>
-        Quantidade: <input type="number" name="quantidade" value="{{ produto[3] }}" required><br>
-        Preço: <input type="number" step="0.01" name="preco" value="{{ produto[4] }}" required><br>
+    <form method="POST" id="atualizar">
+        Nome: <input type="text" name="nome" value="{{ produto[1] }}" required>
+        Descrição: <input type="text" name="descricao" value="{{ produto[2] }}">
+        Quantidade: <input type="number" name="quantidade" value="{{ produto[3] }}" required>
+        Preço: <input type="number" step="0.01" name="preco" value="{{ produto[4] }}" required>
         <button type="submit">Atualizar</button>
     </form>
     <a href="/">Voltar</a>

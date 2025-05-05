@@ -23,13 +23,24 @@ def criar_tabela():
 @app.route('/')
 def index():
     busca = request.args.get('pesquisa')
+    ordenar = request.args.get('ordenar')
+
+    query = 'SELECT * FROM produtos'
+    params = ''
+
+    if busca:
+        query += ' WHERE nome LIKE ?'
+        params += f'%{busca}%'
+
+    if ordenar == 'nome':
+        query += ' ORDER BY nome ASC'
+    elif ordenar == 'preco':
+        query += ' ORDER BY preco DESC'
+    elif ordenar == 'quantidade':
+        query += ' ORDER BY quantidade ASC'
+
     with get_db_connection() as conn:
-        if busca:
-            cursor = conn.execute('SELECT * FROM produtos WHERE nome LIKE ?', ('%' + busca + '%',))
-            produtos = cursor.fetchall()
-        else:
-            cursor = conn.execute('SELECT * FROM produtos')
-            produtos = cursor.fetchall()
+        produtos = conn.execute(query,params).fetchall()
     return render_template('index.html', produtos=produtos)
 
 @app.route('/adicionar', methods=['GET','POST'])

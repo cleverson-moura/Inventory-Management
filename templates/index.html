@@ -2,11 +2,17 @@
 <html>
     <head>
         <title>Estoque</title>
+        <link rel="stylesheet" href="../static/style.css">
     </head>
     <body>
         <form action="/" method="GET">
             <input type="text" name="pesquisa"  placeholder="Pesquisar produto..." value="{{ request.args.get('pesquisa', '') }}">
-            
+            <select name="ordenar">
+                <option value="">Ordenar</option>
+                <option value="nome" {% if request.args.get('ordenar') == 'nome' %}selected{% endif %} >Nome</option>
+                <option value="preco" {% if request.args.get('ordenar') == 'preco' %}selected{% endif %} >Preço</option>
+                <option value="quantidade" {% if request.args.get('ordenar') == 'quantidade' %}selected{% endif %} >quantidade</option>
+            </select>
             <button type="submit">🔍 Buscar</button>
         </form>
         <h1>Lista de Produtos</h1>
