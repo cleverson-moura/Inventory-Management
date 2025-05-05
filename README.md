@@ -86,10 +86,6 @@ preco (decimal)
 ## 📌 Próximas melhorias
  Validação de formulário
 
- Campo de busca por nome
-
- Filtro por quantidade baixa
-
  Tela de login para administradores
 
 Feito com ❤️ usando Flask e SQLite.
